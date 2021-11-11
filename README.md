@@ -1,12 +1,16 @@
 # program_challenge
+
+    Please run this command
+     git checkout master
 To run this code
- - run this line 
- - cd into this folder 
+ - cd program_challenge
 
  - `python3 -m venv env`
  
- `pip install -r requirements.txt`
+ - `source env/bin/activate `
+ 
+ - `pip install -r requirements.txt`
  
  and then run :
 
- `python app.py` 
+ - `python app.py` 
