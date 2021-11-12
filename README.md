@@ -2,7 +2,7 @@
 
 
 To run this code
- - cd program_challenge
+ - `cd program_challenge`
 
  - `python3 -m venv env`
  
