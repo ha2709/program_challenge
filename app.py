@@ -18,8 +18,6 @@ def generate():
     return url is the file name for download
     """
 
-
-
     max_size = 2097152
     open(file_name, 'w')
     file_size = os.stat(file_name).st_size
@@ -27,7 +25,7 @@ def generate():
     def random_alphanumerics(length):
         key = ''
         for i in range(length):
-            key += random.choice(string.digits + string.ascii_lowercase )
+            key += random.choice(string.digits + string.ascii_lowercase)
         return key
 
     with open(file_name, 'a') as my_file:
@@ -35,7 +33,8 @@ def generate():
             length_numeric = random.randint(15, 17)
             length_alpha = random.randint(11, 15)
             length_real = random.randint(1, 5)
-            my_alphabets = ''.join(random.choice(string.ascii_lowercase) for x in range(length_alpha))
+            my_alphabets = ''.join(random.choice(string.ascii_lowercase)\
+                 for x in range(length_alpha))
             my_int = random.randint(0, 100000000000)
             my_real = round(random.uniform(0.0, 10000.0), length_real)
             my_alphanumerics = random_alphanumerics(length_numeric)
@@ -81,11 +80,11 @@ def report():
         if re.fullmatch(re.compile(r'^[0-9]+$'), word):
             count_int += 1
         else:
-            try: 
+            try:
                 if word.index("."):
                     count_real += 1
             except:
-                if re.match(r"(?=.*[a-zA-Z])(?=.*[0-9])^[\w\d ]+$", word):  
+                if re.match(r"(?=.*[a-zA-Z])(?=.*[0-9])^[\w\d ]+$", word):
                     count_alpha_numeric += 1
                 else:
                     count_alphabet += 1
