@@ -17,7 +17,7 @@ def generate():
     alphabetical strings, real numbers, integers, alphanumerics
     return url is the file name for download
     """
-    global my_int, my_alphabets, my_real, my_alphanumerics
+
     min_length = 5
     max_length = 30
 
