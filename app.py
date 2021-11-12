@@ -6,7 +6,7 @@ from flask import Flask, jsonify
 from flask import send_file
 from flask_cors import CORS
 
-file_name = 'output_file.txt'
+file_name = 'output.txt'
 app = Flask(__name__)
 CORS(app)
 

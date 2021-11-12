@@ -1,7 +1,6 @@
 # program_challenge
 
-    Please run this command
-     git checkout master
+
 To run this code
  - cd program_challenge
 
