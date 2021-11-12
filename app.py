@@ -68,14 +68,13 @@ def report():
     list_obj = []
     with open(file_name, "r") as file_stream:
         for line in file_stream:
-            # print(line, type(line))
             list_obj = line.split(",")
-            # print(6, current_line)
+
     count_int = 0
     count_real = 0
     count_alpha_numeric = 0
     count_alphabet = 0
-    for index, word in enumerate(list_obj):
+    for  word in list_obj:
         word = word.strip()
         if re.fullmatch(re.compile(r'^[0-9]+$'), word):
             count_int += 1
