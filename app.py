@@ -18,8 +18,7 @@ def generate():
     return url is the file name for download
     """
 
-    min_length = 5
-    max_length = 30
+
 
     max_size = 2097152
     open(file_name, 'w')
@@ -28,16 +27,18 @@ def generate():
     def random_alphanumerics(length):
         key = ''
         for i in range(length):
-            key += random.choice(string.ascii_lowercase + string.digits)
+            key += random.choice(string.digits + string.ascii_lowercase )
         return key
 
     with open(file_name, 'a') as my_file:
         while file_size < max_size:
-            length = random.randint(min_length, max_length)
-            my_alphabets = ''.join(random.choice(string.ascii_lowercase) for x in range(length))
-            my_int = random.randint(0, 10000)
-            my_real = round(random.uniform(0.0, 10000.0), length)
-            my_alphanumerics = random_alphanumerics(length)
+            length_numeric = random.randint(15, 17)
+            length_alpha = random.randint(11, 15)
+            length_real = random.randint(1, 5)
+            my_alphabets = ''.join(random.choice(string.ascii_lowercase) for x in range(length_alpha))
+            my_int = random.randint(0, 100000000000)
+            my_real = round(random.uniform(0.0, 10000.0), length_real)
+            my_alphanumerics = random_alphanumerics(length_numeric)
             my_file.write(my_alphabets + ', {}'.format(my_int) + \
                 ', {}'.format(my_real) + ', ' + my_alphanumerics + ', ')
             file_size = os.stat(file_name).st_size
@@ -77,21 +78,18 @@ def report():
     count_alphabet = 0
     for index, word in enumerate(list_obj):
         word = word.strip()
-        # print(index, word, str(word).isnumeric(),type(word))
         if re.fullmatch(re.compile(r'^[0-9]+$'), word):
             count_int += 1
         else:
-            try:
+            try: 
                 if word.index("."):
                     count_real += 1
             except:
-                if re.match(r"(?=.*[a-zA-Z])(?=.*[0-9])^[\w\d ]+$", word):
-                    # print(34, word, count_alpha_numeric)
+                if re.match(r"(?=.*[a-zA-Z])(?=.*[0-9])^[\w\d ]+$", word):  
                     count_alpha_numeric += 1
                 else:
                     count_alphabet += 1
-                    # print(31, word, count_alphabet)
-    # print(19, count_int, count_real, count_alpha_numeric, count_alphabet)
+
     data = {
         "Alphabet":count_alphabet,
         "real": count_real,
