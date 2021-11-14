@@ -10,6 +10,20 @@ file_name = 'output.txt'
 app = Flask(__name__)
 CORS(app)
 
+# 2mb file
+max_size = 2097152
+# we can change these variable to change each objects
+max_numeric = 17
+min_numeric = 15
+max_anpha = 15
+min_anpha = 11
+max_real = 5
+min_real = 1
+min_int = 0
+max_int = 100000000000
+max_val_real = 10000.0
+min_val_real = 0
+
 @app.route('/generate')
 def generate():
     """
@@ -18,7 +32,6 @@ def generate():
     return url is the file name for download
     """
 
-    max_size = 2097152
     open(file_name, 'w')
     file_size = os.stat(file_name).st_size
 
@@ -30,13 +43,13 @@ def generate():
 
     with open(file_name, 'a') as my_file:
         while file_size < max_size:
-            length_numeric = random.randint(15, 17)
-            length_alpha = random.randint(11, 15)
-            length_real = random.randint(1, 5)
+            length_numeric = random.randint(min_numeric, max_numeric)
+            length_alpha = random.randint(min_anpha, max_anpha)
+            length_real = random.randint(min_real, max_real)
             my_alphabets = ''.join(random.choice(string.ascii_lowercase)\
                  for x in range(length_alpha))
-            my_int = random.randint(0, 100000000000)
-            my_real = round(random.uniform(0.0, 10000.0), length_real)
+            my_int = random.randint(min_int, max_int)
+            my_real = round(random.uniform(min_val_real, max_val_real), length_real)
             my_alphanumerics = random_alphanumerics(length_numeric)
             my_file.write(my_alphabets + ', {}'.format(my_int) + \
                 ', {}'.format(my_real) + ', ' + my_alphanumerics + ', ')
